@@ -3505,7 +3505,7 @@ namespace Clara {
             // !TBD: Need to include workarounds to be able to declare this
             // destructor as able to throw exceptions
             ~ArgBinder() noexcept(false) {
-                if( m_cl && !std::uncaught_exception() ) {
+                if( m_cl && !std::uncaught_exceptions() ) {
                     m_arg.validate();
                     if( m_arg.isFixedPositional() ) {
                         m_cl->m_positionalArgs.insert( std::make_pair( m_arg.position, m_arg ) );
@@ -4880,7 +4880,7 @@ namespace Catch {
         }
 
         virtual void sectionEnded( SectionInfo const& info, Counts const& prevAssertions, double _durationInSeconds ) {
-            if( std::uncaught_exception() ) {
+            if( std::uncaught_exceptions() ) {
                 m_unfinishedSections.push_back( UnfinishedSections( info, prevAssertions, _durationInSeconds ) );
                 return;
             }
