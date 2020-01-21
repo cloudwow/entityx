@@ -22,7 +22,6 @@ tags_component_test
 *.so
 *.o
 build/*
-entityx/config.h
 Makefile
 html/
 Vagrantfile
